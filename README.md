@@ -1,69 +1,64 @@
 # Практическая работа №10
 
 ### Тема: Работа с Firestorage
-### Цель работы: произвести первичную настройку Firestore во Flutter, реализовать сохранение данных при регистрации пользователя в Firestore, редактирование данных пользователя, работу с данными CRUD, динамическое обновление данных.
+### Цель работы: необходимо реализовать функционал для загрузки и удаления картинок в Firebase Storage, а также отображения списка всех картинок, находящихся в Firebase Storage. В списке должны быть следующие атрибуты: название картинки, сама картинка, размер и ссылка на картинку. Связать Cloud Firestore с Firebase Storage.В  FireStore хранить все данные картинки. Связать Cloud Firestore с Firebase Storage и FirebaseAuth. Реализовать авторизацию и регистрацию. У пользователя есть свои реальные картинки, которые он может выводить, удалять и изменять. Все данные хранятся в Cloud Firestore, а сама картинка хранится в Firebase Storage.
 
 ###
 ### Ход работы:
 ### Для начала работы необходимо настроить проект в Firebase и подключить его Flutter-проекту, в котором будет реализовано приложение. На картинке показан Firebase с подключенным проектом во Flutter.
-![image](https://user-images.githubusercontent.com/99389490/227343402-0ef22b5d-f8c8-44ec-9d05-5bf0c6d39cfb.png)
+![image](https://user-images.githubusercontent.com/99389490/228985691-abea544b-fdb7-4fd2-ae4f-0ba3693c967a.png)
 ###
 ### Также необходимо скачать конфиг-файл «google-service.json» для Android и поместить в проект. 
-![image](https://user-images.githubusercontent.com/99389490/227343475-b44e3bad-2baa-426b-87d6-303846ad313c.png)
+![image](https://user-images.githubusercontent.com/99389490/228985719-f76b7e49-1460-4ccb-a2da-4c8ca9c3f269.png)
 ### 
-### В файл «build.gradle» в dependencies необходимо добавить строчку «classpath 'com.google.gms:google-services:4.3.15».
-![image](https://user-images.githubusercontent.com/99389490/227343568-a266ff91-9d50-430b-8a2c-17f42051541a.png)
+### На уровне app в файле «build.gradle» необходимо отредактировать «compileSdkVersion» и «buildToolsVersion». Также необходимо отредактировать defaultConfig, и добавить «Multidex» в defaultConfig.
+![image](https://user-images.githubusercontent.com/99389490/228985742-7230d4ac-d5d7-4190-b703-328fc5aea076.png)
 ### 
-### На уровне app в файле «build.gradle» необходимо отредактировать «compileSdkVersion» и «buildToolsVersion». Также необходимо отредактировать defaultConfig, и добавить «Multidex» в defaultConfig и dependencies. 
+### После необходимо создать базу данных в Cloud Firestore.
 ##
-![image](https://user-images.githubusercontent.com/99389490/227343675-235e940c-98fd-4ea3-8252-e1795a125baa.png)
+![image](https://user-images.githubusercontent.com/99389490/228985806-13f360e3-846a-4efc-b55d-f15793ab3b23.png)
 ###
-### В файле «pubspec.yaml» должны быть добавлены «firebase_core» и «cloud_firestore».
-![image](https://user-images.githubusercontent.com/99389490/227343771-87cd747c-2429-45a3-94bd-723f6f4585de.png)
+### А также добавить к проекту Firebase Storage, где будут храниться фотографии.
+![image](https://user-images.githubusercontent.com/99389490/228985877-4884bbd3-e3f6-4d6a-bf22-19f3687a9779.png)
 ###
-### После необходимо создать базу данных в Cloud Firestore. 
-![image](https://user-images.githubusercontent.com/99389490/227343866-bdca21ee-84ee-4dd6-ab44-55d2ecc73dd5.png)
+### На данном рисунке изображен вход в приложение с помощью почты и пароля.
+![image](https://user-images.githubusercontent.com/99389490/228985937-bcf286b6-2a56-45bb-acc4-0e17aadb9954.png)
 ###
-### В проекте необходимо создать страницы для взаимодействия с Cloud Firestore. В данном проекте содержатся страницы с регистрацией пользователя, страницей со всеми пользователями, с редактированием и удалением информации о пользователе. 
-![image](https://user-images.githubusercontent.com/99389490/227344021-642f210f-5e1a-454f-b92a-a7177a5cf99e.png)
+### Также работает скрытие пароля с помощью иконка глаза.  
+![image](https://user-images.githubusercontent.com/99389490/228985973-966f84f3-1274-447e-9f88-3c00aa079cc2.png)
 ###
-### Также можно увидеть отображение нового пользователя в Firebase.
-![image](https://user-images.githubusercontent.com/99389490/221419542-2a0f1ffd-7375-4a4b-a632-b218d56c0476.png)
+### Успешная регистрация пользователя.
+![image](https://user-images.githubusercontent.com/99389490/228985993-fc829e5d-43b4-4981-a7ee-12fccea800b8.png)
 ###
-### На данном рисунке изображен код с запуском программы и связью с Firebase.
-![image](https://user-images.githubusercontent.com/99389490/227344133-49fd8b7e-877b-478b-861d-1bd1ee43e768.png)
+### Подтверждение в базе того, что пользователь был зарегистрирован.
+![image](https://user-images.githubusercontent.com/99389490/228986054-12048092-0b9f-4100-8c70-8f93019e4a50.png)
 ###
-### Код реализации просмотра всех пользователей, сохраненных в Firestore на странице всех пользователей в приложении. 
-![image](https://user-images.githubusercontent.com/99389490/227344284-866f9652-6fa4-4892-99f6-5d1ba2a208d3.png)
+### Успешный вход. 
+![image](https://user-images.githubusercontent.com/99389490/228986067-c289ef0a-4369-439f-af59-db1fc8c97e52.png)
 ###
+### На рисунке ниже продемонстрировано добавление фотографии в приложение.
+![image](https://user-images.githubusercontent.com/99389490/228986113-b8b986d8-41bf-4a20-8cc5-b4b63fbf0077.png)
 ###
-![image](https://user-images.githubusercontent.com/99389490/227344400-a97d57b7-5801-40c3-af40-b65a0d8d4273.png)
+### В приложении реализовано редактирование и удаление фотографии и данных о ней из Firestore.
+![image](https://user-images.githubusercontent.com/99389490/228986147-51890ef5-efd5-4d59-ae4c-14132fc21609.png)
+![image](https://user-images.githubusercontent.com/99389490/228986176-6891282c-8cc4-4689-9e18-38554fac62c8.png)
 ###
-### Также код таблицы с пользователями представлен в файле «list_user_ page.dart». Также в данном файле представлено удаление пользователя.
-![image](https://user-images.githubusercontent.com/99389490/227344481-6db296e7-9107-4206-b038-36b944298cbd.png)
-![image](https://user-images.githubusercontent.com/99389490/227344508-d6d2703a-87ed-4853-a0c6-fcc87413efd3.png)
+### Успешное удаление фото из Firestorage.
+![image](https://user-images.githubusercontent.com/99389490/228986223-d10fdd2a-5fe9-4a06-8969-9606d05e4ded.png)
 ###
-### Код реализации регистрации пользователей, которые после будут отображаться в базе Firestore. В данном коде представлен действия добавления новой коллекции в Firestore и последующем добавлении документа «users» с различными полями.
-![image](https://user-images.githubusercontent.com/99389490/227344621-b362d5f3-db94-493c-9c19-5f3f8da24e72.png)
+### На рисунке ниже показан результат удаления фото из приложения и базы.
+![image](https://user-images.githubusercontent.com/99389490/228986258-a87bc841-6901-4986-aae2-343b03bf083b.png)
 ###
-### Пример реализации регистрации пользователей. Также можно отменить действие, нажав по кнопке «Отменить» и после сотрутся все данные полей.
-![image](https://user-images.githubusercontent.com/99389490/227344726-97809324-afa9-41d0-b397-7feceeb14f50.png)
+### Аккаунт пользователя.
+![image](https://user-images.githubusercontent.com/99389490/228986316-66ea80e7-dcf4-4657-89bb-e71825370150.png)
 ###
-![image](https://user-images.githubusercontent.com/99389490/227344776-2d7bff91-d5ab-46d7-b2c2-583f0f93fd79.png)
+### Успешное обновление пароля.
+![image](https://user-images.githubusercontent.com/99389490/228986333-3c23f173-589a-481b-a9e3-7d20a61fbd5a.png)
 ###
-![image](https://user-images.githubusercontent.com/99389490/227344817-4afecfde-9c05-4695-b4bb-d38064a8ab4a.png)
+### Успешное удаление аккаунта.
+![image](https://user-images.githubusercontent.com/99389490/228986398-5661c850-219f-4762-bf00-ee6f58dd1cbd.png)
 ###
-### Код реализации редактирования пользователей, которые после будут отображаться в базе Firestore. 
-![image](https://user-images.githubusercontent.com/99389490/227344934-55e6b315-6bb0-4d4d-952c-67afa421e0fc.png)
-###
-![image](https://user-images.githubusercontent.com/99389490/227344975-284b91f5-4931-4087-af5e-1dabddd3d54b.png)
-###
-![image](https://user-images.githubusercontent.com/99389490/227345018-1a05f109-4293-46a2-91a5-035e50f11b99.png)
-###
-![image](https://user-images.githubusercontent.com/99389490/227345043-eb37a1db-3772-4399-a50b-f99da2d6f077.png)
-###
-![image](https://user-images.githubusercontent.com/99389490/227345065-8c7d53e3-c4ed-426e-95ce-f7cf053156b6.png)
-###
-![image](https://user-images.githubusercontent.com/99389490/227345085-754979c2-fe49-44ce-b3ec-2980c8883b0e.png)
+### Информация в Firestore о фотографиях.
+![image](https://user-images.githubusercontent.com/99389490/228986459-b4c943bc-5006-4d07-babe-9d5088c3af92.png)
 
-### Вывод: В данной практической работе была произведена первичная работа с Firestore. Были реализованы функции: сохранение данных при регистрации пользователя в Firestore, редактирование данных пользователя, работа с данными CRUD, динамическое обновление данных.
+### Вывод: В данной практической работе была произведена первичная работа с Firestorage. Были реализованы функции: функционал для загрузки и удаления картинок в Firebase Storage, а также отображения списка всех картинок, находящихся в Firebase Storage. Связь Cloud Firestore с Firebase Storage. В FireStore хранятся все данные картинки. Связь Cloud Firestore с Firebase Storage и FirebaseAuth. Реализованы авторизация и регистрация. У пользователя есть свои реальные картинки, которые он может выводить, удалять и изменять. Все данные хранятся в Cloud Firestore, а сама картинка хранится в Firebase Storage.
